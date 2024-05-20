@@ -10,16 +10,16 @@ source:
 
 build:
   number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  skip: True  # [py<38]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
-    - python >=3.8
+    - python
     - poetry-core >=1.0.0
     - pip
   run:
-    - python >=3.8
+    - python
     - langchain >=0.1.15,<0.2.0
     - langchain-core >=0.1.41,<0.2.0
 
